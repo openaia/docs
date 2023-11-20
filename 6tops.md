@@ -20,10 +20,14 @@ List of 6TOPS NPU-based AI Accelerators supported by OpenAIA.
 
 ## OpenAIA
 
-- **OpenAIA v1.0**
-  - Compile OpenAIA
-  - Compile Linux Kernel
-  - Compile U-Boot
+### OpenAIA v1.0
+- **Compile OpenAIA**
+
+  - [Debmodel](https://github.com/openaia/debmodel#readme) - For Debos based OpenAIA
+  - [meta-openaia](https://github.com/openaia/meta-openaia#readme) - For Yocto/OE layer based OpenAIA
+
+- **Compile Linux Kernel**
+- **Compile U-Boot**
 
 - **Flash Program**
   - Program eMMC
