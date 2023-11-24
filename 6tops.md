@@ -41,7 +41,67 @@ List of 6TOPS NPU-based AI Accelerators supported by OpenAIA.
 - eMMC
 - LPDDR4X
 - OTP
-- WiFi6
+###  WiFi6
+
+- **Check wireless Interface Enabled**
+
+        openaia@6tops:~$ sudo ifconfig
+
+        wlP3p49s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+            ether 36:be:f6:1c:24:34  txqueuelen 1000  (Ethernet)
+            RX packets 0  bytes 0 (0.0 KiB)
+            RX errors 0  dropped 0  overruns 0  frame 0
+            TX packets 0  bytes 0 (0.0 KiB)
+            TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+- **Enable Wifi**
+
+        openaia@6tops:~$ nmcli radio wifi
+        enabled
+        openaia@6tops:~$ nmcli radio wifi o
+
+
+- **List Wifi AccessPoints**
+
+        openaia@6tops:~$ nmcli dev wifi list
+        IN-USE  BSSID              SSID                 MODE   CHAN  RATE        SIGNAL>
+        *   D4:6E:0E:E6:A7:5A  AP-1                   Infra  11    270 Mbit/s  89    >
+            9C:53:22:8A:15:0E  AP-2                   Infra  6     130 Mbit/s  52    >
+
+
+- **Connect**
+
+        openaia@6tops:~$ sudo nmcli dev wifi connect "wifi_name" password "wifi_password"
+        Device 'wlP3p49s0' successfully activated with 'd0d1f61e-6093-4830-9dea-fa2e0d21b2d5'.
+
+
+- **Check wireless Interface for IP address**
+
+        openaia@6tops:~$ sudo ifconfig
+
+        wlP3p49s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.113  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::a577:9922:977e:e49b  prefixlen 64  scopeid 0x20<link>
+        ether a4:34:d9:0b:85:ce  txqueuelen 1000  (Ethernet)
+        RX packets 34  bytes 5022 (4.9 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 33  bytes 4427 (4.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+- **Ping to Network**
+
+        openaia@6tops:~$ ping google.com
+        Device 'wlP3p49s0' successfully activated with 'd0d1f61e-6093-4830-9dea-fa2e0d21b2d5'.
+        PING google.com (142.250.195.238) 56(84) bytes of data.
+        64 bytes from maa03s43-in-f14.1e100.net (142.250.195.238): icmp_seq=1 ttl=59 time=44.4 ms
+        64 bytes from maa03s43-in-f14.1e100.net (142.250.195.238): icmp_seq=2 ttl=59 time=18.4 ms
+        ^C
+        --- google.com ping statistics ---
+        2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+        rtt min/avg/max/mdev = 18.356/31.383/44.411/13.027 ms
+
+
 - CAM0
 - CAM1
 
