@@ -107,13 +107,46 @@ List of 6TOPS NPU-based AI Accelerators supported by OpenAIA.
 - 40PIN Header
 - USB 2.0
 - USB 3.0
-- 2.5G Ethernet
+
+### 2.5G ETH
+
+- **Check ETH**
+  ```
+  $ lsmod | grep r8169
+    r8169                  90112  0
+  $ lspci | grep Ethernet
+    0002:21:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8125 2.5GbE Controller (rev 05)
+  ```
+
+- **Check IP address**
+  ```
+  $ sudo ifconfig enP2p33s0
+  enP2p33s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+	inet 192.168.29.169  netmask 255.255.255.0  broadcast 192.168.29.255
+	inet6 2405:201:c00a:a208:d2f2:553c:fd24:67a3  prefixlen 64  scopeid 0x0<global>
+	inet6 fe80::94e3:a26c:1938:8b45  prefixlen 64  scopeid 0x20<link>
+	ether 0a:31:5d:75:01:ab  txqueuelen 1000  (Ethernet)
+	RX packets 506  bytes 38898 (37.9 KiB)
+	RX errors 0  dropped 72  overruns 0  frame 0
+	TX packets 106  bytes 10049 (9.8 KiB)
+	TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+  ```
+
+- **Ping**
+  ```
+  $ sudo ping google.com
+  PING google.com(maa05s23-in-x0e.1e100.net (2404:6800:4007:81e::200e)) 56 data bytes
+  64 bytes from maa05s23-in-x0e.1e100.net (2404:6800:4007:81e::200e): icmp_seq=1 ttl=118 time=17.8 ms
+  64 bytes from maa05s23-in-x0e.1e100.net (2404:6800:4007:81e::200e): icmp_seq=2 ttl=118 time=17.0 ms
+  ```
+
 - Audio Playback
 - Audio Record
 - SATA
 - M.2 M-Key (WiFi)
 
 ### M.2 E-Key (4G)
+
 - **Link peripheral**
 
   First, connect 4G Module to board .
